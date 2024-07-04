@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "paths": {
+        "@/panda/*": ["./styled-system/*"],
+        "@/ui/*": ["./src/*"],
+        "@/components/*": ["./src/components/*"]
+    }
+  },
+  "exclude": ["node_modules", "styled-system", "dist"],
+  "include": ["./src/**/*"]
+}

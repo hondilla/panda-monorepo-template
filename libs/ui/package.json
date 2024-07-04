@@ -1,0 +1,28 @@
+{
+  "name": "@template/ui",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "panda:codegen": "bun run panda:codegen",
+    "dev": "env NODE_ENV=development panda codegen && rollup -c ./rollup.config.mjs --watch",
+    "build": "env NODE_ENV=production rimraf dist && rollup -c ./rollup.config.mjs && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "clean": "rimraf dist node_modules styled-system .turbo"
+  },
+  "peerDependencies": {
+    "@pandacss/dev": "^0.41.0",
+    "react": "beta",
+    "react-dom": "beta"
+  },
+  "devDependencies": {
+    "@template/ui-preset": "workspace:^",
+    "rollup": "^4.18.0",
+    "rollup-swc-preserve-directives": "^0.3.2",
+    "rollup-plugin-swc3": "^0.11.2",
+    "tsc-alias": "^1.8.10"
+  }
+}

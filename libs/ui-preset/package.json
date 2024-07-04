@@ -1,0 +1,26 @@
+{
+    "name": "@template/ui-preset",
+    "version": "0.0.0",
+    "description": "",
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "sideEffects": false,
+    "scripts": {
+      "dev": "env NODE_ENV=development rollup -c ./rollup.config.mjs --watch",
+      "build": "env NODE_ENV=production rimraf dist && rollup -c ./rollup.config.mjs && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+      "clean": "rimraf dist node_modules styled-system .turbo"
+    },
+    "peerDependencies": {
+      "@pandacss/dev": "^0.41.0"
+    },
+    "devDependencies": {
+      "rollup": "^4.18.0",
+      "rollup-swc-preserve-directives": "^0.3.2",
+      "rollup-plugin-swc3": "^0.11.2",
+      "tsc-alias": "^1.8.10"
+    }
+  }

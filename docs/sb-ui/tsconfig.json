@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@/sb-ui/*": ["./stories/*"],
+      "@/ui/*": ["../../libs/ui/src/*"],
+      "@/panda/*": ["./styled-system/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "include": ["./stories/**/*"]
+}

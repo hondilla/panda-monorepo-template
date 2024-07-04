@@ -1,0 +1,32 @@
+{
+  "name": "@template/sb-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "panda:codegen": "bun run panda:codegen",
+    "dev": "env NODE_ENV=development panda codegen && storybook dev -p 6006 --no-open",
+    "build": "storybook build -o dist",
+    "clean": "rimraf dist node_modules styled-system .turbo"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "beta",
+    "react-dom": "beta"
+  },
+  "devDependencies": {
+    "@template/ui": "workspace:^",
+    "@template/ui-preset": "workspace:^",
+    "@pandacss/dev": "^0.41.0",
+    "@storybook/addon-webpack5-compiler-swc": "^1.0.4",
+    "@storybook/react": "^8.1.11",
+    "@storybook/react-vite": "^8.1.11",
+    "@swc/core": "^1.6.6",
+    "@swc/helpers": "^0.5.11",
+    "storybook": "^8.1.11",
+    "typescript": "^5.5.2",
+    "vite-tsconfig-paths": "^4.3.2"
+  }
+}
