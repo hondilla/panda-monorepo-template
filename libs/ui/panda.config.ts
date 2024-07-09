@@ -7,7 +7,8 @@ export default defineConfig({
     './src/**/*.{js,jsx,ts,tsx}'
   ],
   exclude: [],
-  importMap: '@/panda',
+  importMap: '@template/ui-panda',
   jsxFramework: 'react',
-  jsxFactory: 'panda'
+  jsxFactory: 'panda',
+  outExtension: 'js'
 })

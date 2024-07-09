@@ -4,7 +4,17 @@ import { StorybookConfig } from '@storybook/react-vite'
 import { InlineConfig } from 'vite'
 
 const config: StorybookConfig = {
-  stories: ['../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: [
+    '../stories/**/*.mdx',
+    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'
+  ],
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-themes',
+    'storybook-dark-mode',
+    '@storybook/addon-a11y'
+  ],
   framework: {
     name: '@storybook/react-vite',
     options: {}
@@ -18,8 +28,29 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       resolve: {
         alias: {
-          '@/ui': path.resolve(__dirname, '../../../libs/ui/src'),
-          '@/panda': path.resolve(__dirname, '../styled-system')
+          '@template/ui': path.resolve(__dirname, '../../../libs/ui/src'),
+          '@/components': path.resolve(
+            __dirname,
+            '../../../libs/ui/src/components'
+          )
+        }
+      },
+      build: {
+        rollupOptions: {
+          external: [
+            'react',
+            'react-dom',
+            'react/jsx-runtime',
+            '@pandacss/dev',
+            '@template/ui-panda/css',
+            '@template/ui-panda/jsx',
+            '@template/ui-panda/recipes',
+            '@react-aria/button',
+            '@react-aria/textfield',
+            '@react-aria/utils',
+            '@react-aria/label',
+            '@headlessui/react'
+          ]
         }
       }
     })

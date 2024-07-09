@@ -3,9 +3,10 @@ import { fileURLToPath } from 'url'
 
 import { includeIgnoreFile } from '@eslint/compat'
 import { FlatCompat } from '@eslint/eslintrc'
+import nextLint from '@next/eslint-plugin-next'
 import tsLint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
-import prittierRecommended from 'eslint-plugin-prettier/recommended'
+import prettierRecommended from 'eslint-plugin-prettier/recommended'
 import globals from 'globals'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -16,21 +17,22 @@ const compat = new FlatCompat({
   baseDirectory: __dirname
 })
 
-export default [
+const config = [
   includeIgnoreFile(gitignorePath),
-  prittierRecommended,
+  prettierRecommended,
   ...compat.extends('plugin:@typescript-eslint/recommended'),
   {
     files: [
-      '**/src/*.{j,t}s',
-      '**/src/**/*.{j,t}s',
-      '**/tests/*.{j,t}s',
-      '**/tests/**/*.{j,t}s',
-      '**/stories/*.{j,t}s',
-      '**/stories/*.{j,t}s'
+      '**/src/*.{js,jsx,ts,tsx}',
+      '**/src/**/*.{js,jsx,ts,tsx}',
+      '**/tests/*.{js,jsx,ts,tsx}',
+      '**/tests/**/*.{js,jsx,ts,tsx}',
+      '**/stories/*.{js,jsx,ts,tsx}',
+      '**/stories/*.{js,jsx,ts,tsx}'
     ],
     plugins: {
-      tslint: tsLint
+      tslint: tsLint,
+      nextLint: nextLint
     },
     languageOptions: {
       globals: {
@@ -43,6 +45,11 @@ export default [
         tsconfigRootDir: __dirname,
         sourceType: 'module',
         extraFileExtensions: []
+      }
+    },
+    settings: {
+      next: {
+        rootDir: '/apps/frontend/*'
       }
     },
     ignores: [
@@ -62,3 +69,5 @@ export default [
     }
   }
 ]
+
+export default config

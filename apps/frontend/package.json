@@ -1,0 +1,25 @@
+{
+  "name": "@template/next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "clean": "rimraf .next node_modules .turbo styled-system"
+  },
+  "dependencies": {
+    "react": "^19.0.0-rc.0",
+    "react-dom": "^19.0.0-rc.0",
+    "next": "^15.0.0-rc.0"
+  },
+  "devDependencies": {
+    "@template/ui": "workspace:^",
+    "@template/ui-panda": "workspace:^",
+    "@template/ui-preset": "workspace:^",
+    "@pandacss/dev": "^0.42.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^9.6.0",
+    "typescript": "^5.5.3"
+  }
+}

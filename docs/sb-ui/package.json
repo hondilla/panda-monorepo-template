@@ -4,29 +4,40 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "panda:codegen": "bun run panda:codegen",
-    "dev": "env NODE_ENV=development panda codegen && storybook dev -p 6006 --no-open",
-    "build": "storybook build -o dist",
-    "clean": "rimraf dist node_modules styled-system .turbo"
+    "dev": "env NODE_ENV=development storybook dev -p 6006 --no-open",
+    "build": "rimraf dist && storybook build -o dist",
+    "clean": "rimraf dist node_modules .turbo styled-system",
+    "test": "test-storybook",
+    "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"bun run build --quiet && bunx http-server storybook-static --port 6006\" \"wait-on tcp:6006 && bun run test-storybook\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "react": "beta",
-    "react-dom": "beta"
+    "react": "^19.0.0-rc.0",
+    "react-dom": "^19.0.0-rc.0"
   },
   "devDependencies": {
     "@template/ui": "workspace:^",
+    "@template/ui-panda": "workspace:^",
     "@template/ui-preset": "workspace:^",
-    "@pandacss/dev": "^0.41.0",
+    "@pandacss/dev": "^0.42.0",
+    "@storybook/addon-a11y": "^8.1.11",
+    "@storybook/addon-docs": "^8.1.11",
+    "@storybook/addon-essentials": "^8.1.11",
+    "@storybook/addon-interactions": "^8.1.11",
+    "@storybook/addon-themes": "^8.1.11",
     "@storybook/addon-webpack5-compiler-swc": "^1.0.4",
+    "@storybook/blocks": "^8.1.11",
     "@storybook/react": "^8.1.11",
     "@storybook/react-vite": "^8.1.11",
-    "@swc/core": "^1.6.6",
+    "@storybook/test": "^8.1.11",
+    "@swc/core": "^1.6.13",
     "@swc/helpers": "^0.5.11",
+    "concurrently": "^8.2.2",
     "storybook": "^8.1.11",
-    "typescript": "^5.5.2",
+    "storybook-dark-mode": "^4.0.2",
+    "typescript": "^5.5.3",
     "vite-tsconfig-paths": "^4.3.2"
   }
 }

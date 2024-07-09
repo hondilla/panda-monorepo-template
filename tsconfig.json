@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "allowJs": true,
     "composite": false,
     "declaration": true,
     "declarationMap": true,
@@ -19,9 +20,12 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "ESNext",
-    "target": "ESNext",
-    "emitDeclarationOnly": true
+    "module": "esnext",
+    "target": "esnext",
+    "emitDeclarationOnly": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "incremental": true
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

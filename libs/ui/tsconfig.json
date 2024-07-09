@@ -1,15 +1,15 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "allowJs": true,
     "rootDir": "./src",
     "baseUrl": ".",
     "outDir": "./dist",
+    "moduleResolution": "NodeNext",
     "paths": {
-        "@/panda/*": ["./styled-system/*"],
-        "@/ui/*": ["./src/*"],
-        "@/components/*": ["./src/components/*"]
+      "@template/ui/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"]
     }
   },
-  "exclude": ["node_modules", "styled-system", "dist"],
-  "include": ["./src/**/*"]
+  "exclude": ["node_modules", "dist"]
 }

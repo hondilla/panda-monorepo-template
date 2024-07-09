@@ -1,1 +1,1 @@
-export * from '@/components/buttons/ButtonBase/ButtonBase'
+export * from '@/components/base/Button'

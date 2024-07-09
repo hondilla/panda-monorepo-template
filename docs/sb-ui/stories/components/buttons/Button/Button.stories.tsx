@@ -1,18 +1,33 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { expect, fn, userEvent, within } from '@storybook/test'
+import {
+  Button,
+  type ButtonProps
+} from '@template/ui/components/buttons/Button'
 
-import { ButtonBase } from '@/ui/components/buttons/ButtonBase/ButtonBase'
+const meta: Meta<typeof Button> = {
+  title: 'Design System/Buttons/Button',
+  component: Button,
+  args: {
+    children: 'Button',
+    onPress: fn()
+  }
+}
+export default meta
 
-const meta: Meta<typeof ButtonBase> = {
-  title: 'Design System/Buttons',
-  component: ButtonBase
+type Story = StoryObj<typeof Button>
+type StoryPlay = {
+  args: ButtonProps
+  canvasElement: HTMLElement
 }
 
-export default meta
-type Story = StoryObj<typeof ButtonBase>
+export const Base: Story = {
+  play: async ({ args, canvasElement }: StoryPlay) => {
+    const canvas = within(canvasElement)
 
-export const Primary: Story = {
-  args: {
-    primary: true,
-    label: 'Button'
+    const buttonElement = canvas.getByRole('button')
+    await userEvent.click(buttonElement)
+
+    await expect(args.onPress).toHaveBeenCalled()
   }
 }

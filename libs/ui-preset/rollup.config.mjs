@@ -1,7 +1,7 @@
 import { defineRollupSwcOption, swc } from 'rollup-plugin-swc3'
 import swcPreserveDirectives from 'rollup-swc-preserve-directives'
 
-export default {
+const config = {
   input: './src/index.ts',
   watch: {
     include: 'src/**/*'
@@ -30,3 +30,5 @@ export default {
     swcPreserveDirectives()
   ]
 }
+
+export default config

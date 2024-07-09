@@ -5,23 +5,31 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
-  "type": "module",
   "scripts": {
-    "panda:codegen": "bun run panda:codegen",
-    "dev": "env NODE_ENV=development panda codegen && rollup -c ./rollup.config.mjs --watch",
-    "build": "env NODE_ENV=production rimraf dist && rollup -c ./rollup.config.mjs && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "dev": "env NODE_ENV=development rollup -c ./rollup.config.mjs --watch",
+    "build": "env NODE_ENV=production rimraf dist && rollup -c ./rollup.config.mjs && tsc --project tsconfig.build.json && tsc-alias --project tsconfig.build.json",
     "clean": "rimraf dist node_modules styled-system .turbo"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^0.41.0",
-    "react": "beta",
-    "react-dom": "beta"
+    "@headlessui/react": "^2.1.2",
+    "@pandacss/dev": "^0.42.0",
+    "@react-aria/button": "^3.9.5",
+    "@react-aria/textfield": "^3.14.5",
+    "@react-aria/label": "^3.7.8",
+    "@react-aria/utils": "^3.24.1",
+    "react": "^19.0.0-rc.0",
+    "react-dom": "^19.0.0-rc.0"
   },
   "devDependencies": {
     "@template/ui-preset": "workspace:^",
-    "rollup": "^4.18.0",
-    "rollup-swc-preserve-directives": "^0.3.2",
+    "@template/ui-panda": "workspace:^",
+    "@swc/core": "^1.6.13",
+    "rollup": "^4.18.1",
+    "rollup-swc-preserve-directives": "^0.7.0",
     "rollup-plugin-swc3": "^0.11.2",
     "tsc-alias": "^1.8.10"
   }

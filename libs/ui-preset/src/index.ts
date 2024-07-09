@@ -1,11 +1,13 @@
 import { definePreset } from '@pandacss/dev'
 
-import { buttons } from './recipes/button'
+import { recipes } from './recipes'
+import { slotRecipes } from './slot-recipes'
 
 export const MagePreset = definePreset({
   theme: {
     extend: {
-      recipes: buttons
+      recipes: recipes,
+      slotRecipes: slotRecipes
     }
   }
 })
